@@ -1,6 +1,7 @@
 const rockBtn = document.querySelector('.rock');
 const paperBtn = document.querySelector('.paper');
 const scissorsBtn = document.querySelector('.scissors');
+const result = document.querySelector('.result')
 
 rockBtn.addEventListener('click', () => playRound("Rock"));
 paperBtn.addEventListener('click', () => playRound("Paper"));
@@ -22,7 +23,7 @@ function playRound(playerSelection) {
         playerSelection === "Scissors" && computerSelection === "Paper"
     )
     {
-        console.log("win") ;
+        result.textContent = "You win! " + playerSelection + " beats " + computerSelection + ".";
     }
         
 
@@ -30,10 +31,13 @@ function playRound(playerSelection) {
     else if (playerSelection === "Rock" && computerSelection === "Paper" ||
         playerSelection === "Paper" && computerSelection === "Scissors" ||
         playerSelection === "Scissors" && computerSelection === "Rock"
-    )
-        console.log("lose");
-    
-    console.log("tie");
+    ){
+        result.textContent = "You lose! " + computerSelection + " beats " + playerSelection + ".";
+    }
+
+    else if(playerSelection === computerSelection){
+        result.textContent = "Tie!";
+    }
 }
 
 // function game(){
