@@ -18,7 +18,6 @@ function getComputerChoice(){
     return choices[Math.floor(Math.random() * choices.length)];
 }
 
-
 function playRound(playerSelection) {
     
     const computerSelection = getComputerChoice();
@@ -30,6 +29,11 @@ function playRound(playerSelection) {
         playerSelection === "Scissors" && computerSelection === "Paper"
     )
     {
+        if (playerScore === 5 || comScore ===5){
+            playerScore = 0;
+            comScore = 0;
+            comScoreText.textContent = "Com: " + comScore;
+        }
         result.textContent = "You win! " + playerSelection + " beats " + computerSelection + ".";
         playerScore++;
         playerScoreText.textContent = "Player: " + playerScore;
@@ -44,6 +48,11 @@ function playRound(playerSelection) {
         playerSelection === "Paper" && computerSelection === "Scissors" ||
         playerSelection === "Scissors" && computerSelection === "Rock"
     ){
+        if (playerScore === 5 || comScore ===5){
+            playerScore = 0;
+            comScore = 0;
+            playerScoreText.textContent = "Player: " + playerScore;
+        }
         result.textContent = "You lose! " + computerSelection + " beats " + playerSelection + ".";
         comScore++;
         comScoreText.textContent = "Com: " + comScore;
