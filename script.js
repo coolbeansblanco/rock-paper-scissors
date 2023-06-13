@@ -11,11 +11,13 @@ scissorsBtn.addEventListener('click', () => playRound("Scissors"));
 
 playerScore = 0;
 comScore = 0;
+goalScore = 5;
 
 function getComputerChoice(){
     choices = ["Rock", "Paper", "Scissors"];
     return choices[Math.floor(Math.random() * choices.length)];
 }
+
 
 function playRound(playerSelection) {
     
@@ -31,6 +33,9 @@ function playRound(playerSelection) {
         result.textContent = "You win! " + playerSelection + " beats " + computerSelection + ".";
         playerScore++;
         playerScoreText.textContent = "Player: " + playerScore;
+        if (playerScore === goalScore){
+            result.textContent = "You have won! Final score - " + playerScoreText.textContent + " " + comScoreText.textContent;
+        }
     }
         
 
@@ -42,6 +47,9 @@ function playRound(playerSelection) {
         result.textContent = "You lose! " + computerSelection + " beats " + playerSelection + ".";
         comScore++;
         comScoreText.textContent = "Com: " + comScore;
+        if (comScore === goalScore){
+            result.textContent = "You have lost! Final score - " + playerScoreText.textContent + ", " + comScoreText.textContent;
+        }
     }
 
     else if(playerSelection === computerSelection){
